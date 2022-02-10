@@ -21,6 +21,15 @@ pipeline {
             		jacoco()
 		}
 	}       
+	
+	
+	stage('SonarQube'){
+		steps{
+				bat label: '', script: '''mvn sonar:sonar \
+				-Dsonar.host.url=http://localhost:9000 \
+				-Dsonar.login=5e26dd4c7eccddc72cf288d97e2945c9bb227ccd'''
+			}
+   		}
        
 		
 	stage('Maven Package'){
